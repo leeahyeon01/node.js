@@ -14,7 +14,7 @@ function login() {
     id: id.value,
     psword: psword.value,
   };
-   console.log(req);
+   console.log(req); // 입력받은 아이디 비번 출력
 
   //브라우저에 입력한 아이디/비번을 서버에 전달 -이러한 데이터를 서버에서 받으려면 api가 마련이 되어있어야함
   fetch("/login", {
@@ -26,8 +26,17 @@ function login() {
     body: JSON.stringify(req),
     //strigfy -문자열로 바꿔준다
     //json 데이터 타입을 이용해서 데이터를 전달
-  }).then((res) => res.json()) // res.json을 받아서
-  .then((res) => console.log(res)); //콘솔에 찍어줌
+  }).then((res) => res.json()) // res.json을 받음
+  // .then((res) => console.log(res))
+  .then((res) => { 
+    if(res.success){ //true 일때 
+      location.href = "/"
+    }else{
+      alert(res.msg);
+    }
+  }).catch((err)=>{
+    console.error(new Error ("로그인중 에러발생"))
+  })
   //서버에서 응답한 데이터(res)를 받을려면 then메소드를 사용해 데이터를 받아옴
   // res.json()의 반환값은 promise다. 
 }

@@ -31,8 +31,7 @@ const process = {
         });
        }
     }
-
-    return res.json({
+    return res.json({ //res객체를 json형식으로 return해줌
       success:false,
       msg:"로그인에 실패하였습니다"
     });
