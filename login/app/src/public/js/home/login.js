@@ -34,7 +34,7 @@ function login() {
     }else{
       alert(res.msg);
     }
-  }).catch((err)=>{
+  }).catch((err)=>{ //에러시 
     console.error(new Error ("로그인중 에러발생"))
   })
   //서버에서 응답한 데이터(res)를 받을려면 then메소드를 사용해 데이터를 받아옴
